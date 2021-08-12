@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Recipe from './component/Recipe';
+import DropdownCategory from './component/DropdownCategory';
 import './App.css';
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
   //const URL = "http://127.0.0.1:8000/"
 
   const [recipes, setRecipes] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
 
@@ -16,10 +18,20 @@ const App = () => {
     getRecipes();
   }, [query])
 
+  useEffect(() => {
+    getCategories();
+  }, [])
+
   const getRecipes = async () => {
     const response = await fetch(`${URL}/recipes_paginated/?page_size=20&categories=&ingredients=&name=${query}`);
     const data = await response.json();
     setRecipes(data.data);
+  };
+
+  const getCategories = async () => {
+    const categories_response = await fetch(`${URL}/categories`);
+    const categories_data = await categories_response.json();
+    setCategories(categories_data);
   };
 
   const updateSearch = e => {
@@ -35,6 +47,11 @@ const App = () => {
   return(
     <div className="App">
       <form onSubmit={getSearch} className="search-form">
+
+        <DropdownCategory
+          categories ={categories}
+        />
+
         <input className="search-bar" type="text" value={search} onChange={updateSearch}/>
         <button className="search-button" type="submit">
           Buscar
