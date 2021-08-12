@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './recipe.module.css';
+import style from '../recipe.module.css';
 
 const Recipe = ({title, description, image, ingredients, categories, links}) => {
 
@@ -15,7 +15,7 @@ const Recipe = ({title, description, image, ingredients, categories, links}) => 
             </ol>
             <ol className="category-container">
                 {categories.map(category => (
-                    <li key={category.id}>{category.name}</li>
+                    <li className={style.category} style={{background: category.color}} key={category.id}>{category.name}</li>
                 ))}
             </ol>
             <ol className="link-container">

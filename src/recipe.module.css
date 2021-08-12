@@ -18,3 +18,11 @@
     width: 30vw;
     height: 30vw;
 }
+
+.category{
+    background-color: #EEF; /* Set the background color */
+    border-radius: 100px;     /* Add some roundness */
+    border: 1px #CCF solid; /* Add a border */
+    padding: 2px 5px;
+    display: inline;
+}
