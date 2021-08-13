@@ -2,21 +2,25 @@ import React, {useEffect, useState} from 'react';
 import Recipe from './component/Recipe';
 import DropdownCategory from './component/DropdownCategory';
 import './App.css';
+import * as ReactBootStrap from 'react-bootstrap';
 
 const App = () => {
 
-  //const URL = "https://cocina-random-backend.herokuapp.com";
-  const URL = "http://127.0.0.1:8000/"
+  const URL = "https://cocina-random-backend.herokuapp.com";
+  //const URL = "http://127.0.0.1:8000/"
+
+  const [loading, setLoading] = useState(false);
 
   const [recipes, setRecipes] = useState([]);
+
+  const [query_name, setQueryName] = useState("");
+  const [search, setSearch] = useState("");
+  
   const [selected, setSelected] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [search, setSearch] = useState("");
-  const [query_name, setQueryName] = useState("");
-
-  const [query, setQuery] = useState("");
-
   const [query_categories, setQueryCategories] = useState([]);
+  
+  const [query, setQuery] = useState("");
 
 
   useEffect(() => {
@@ -33,6 +37,7 @@ const App = () => {
 
   const getRecipes = async () => {
     const response = await fetch(`${URL}/recipes_paginated/?page_size=20&${query}`);
+    setLoading(true)
     const data = await response.json();
     setRecipes(data.data);
   };
@@ -78,6 +83,9 @@ const App = () => {
         </button>
       </form>
       <div className="recipes">
+      {loading ? (null): (
+        <ReactBootStrap.Spinner className="spinner" animation="border" />
+      )}
       {recipes.map(recipe=>(
         <Recipe
           key={recipe.id}
