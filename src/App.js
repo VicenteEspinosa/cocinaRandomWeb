@@ -14,10 +14,9 @@ const App = () => {
   const [recipes, setRecipes] = useState([]);
 
   const [query_name, setQueryName] = useState("");
-  const [search, setSearch] = useState("");
   
-  const [selected, setSelected] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [selected, setSelected] = useState([]);
   const [query_categories, setQueryCategories] = useState([]);
   
   const [query, setQuery] = useState("");
@@ -57,14 +56,12 @@ const App = () => {
   };
 
   const updateSearch = e => {
-    setSearch(e.target.value);
+    setQueryName(e.target.value);
   };
 
   const getSearch = e => {
     e.preventDefault();
-    setQueryName(search);
     setQuery(`&categories=${query_categories}&ingredients=&name=${query_name}`)
-    setSearch("");
   }
 
   return(
@@ -77,7 +74,7 @@ const App = () => {
           setSelected={setSelected}
         />
 
-        <input className="search-bar" type="text" value={search} onChange={updateSearch}/>
+        <input className="search-bar" type="text" value={query_name} onChange={updateSearch}/>
         <button className="search-button" type="submit">
           Buscar
         </button>
