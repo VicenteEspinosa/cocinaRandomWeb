@@ -14,6 +14,14 @@ const DropdownCategory = ({categories, selected, setSelected}) => {
             onChange={setSelected}
             labelledBy="Select"
             // isLoading={true}
+            overrideStrings={{
+                "allItemsAreSelected": "Todas las categorías seleccionadas.",
+                "clearSearch": "Limpiar busqueda",
+                "noOptions": "Sin opciones",
+                "search": "Buscar",
+                "selectAll": "Marcar todo",
+                "selectSomeItems": "Categorías..."
+              }}
         />
         </div>
     );
