@@ -8,6 +8,8 @@
     background: white;
     align-items: center;
     min-width: 40%;
+    min-height: 40%;
+    flex-grow: 0;
 }
 
 .image{
@@ -25,4 +27,17 @@
     border: 1px #CCF solid; /* Add a border */
     padding: 2px 5px;
     display: inline;
+}
+
+.ingredient{
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    margin: 20px;
+    justify-content: space-around;
+    background: white;
+    align-items: center;
+    min-width: 40%;
+    border-radius: 10px;
+    /* border: 5px solid rgb(188, 194, 188); */
 }

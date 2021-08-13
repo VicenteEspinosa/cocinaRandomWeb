@@ -1,21 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import MultiSelect from "react-multi-select-component";
 
 
-const DropdownCategory = ({categories}) => {
+const DropdownCategory = ({categories, selected, setSelected}) => {
 
     const options = categories
 
-    const [selected, setSelected] = useState([]);
-
     return (
         <div>
-        {/* <pre>{JSON.stringify(selected)}</pre> */}
         <MultiSelect
             options={options}
             value={selected}
             onChange={setSelected}
             labelledBy="Select"
+            // isLoading={true}
         />
         </div>
     );

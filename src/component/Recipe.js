@@ -8,7 +8,7 @@ const Recipe = ({title, description, image, ingredients, categories, links}) => 
             <h1>{title}</h1>
             <p>{description}</p>
             <img className={style.image} src={image} alt="" />
-            <ol className="ingredient-container">
+            <ol className={style.ingredient}>
                 {ingredients.map(ingredient => (
                     <li key={ingredient.id}>{ingredient.name}</li>
                 ))}

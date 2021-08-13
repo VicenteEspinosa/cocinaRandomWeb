@@ -5,13 +5,18 @@ import './App.css';
 
 const App = () => {
 
-  const URL = "https://cocina-random-backend.herokuapp.com";
-  //const URL = "http://127.0.0.1:8000/"
+  //const URL = "https://cocina-random-backend.herokuapp.com";
+  const URL = "http://127.0.0.1:8000/"
 
   const [recipes, setRecipes] = useState([]);
+  const [selected, setSelected] = useState([]);
   const [categories, setCategories] = useState([]);
   const [search, setSearch] = useState("");
+  const [query_name, setQueryName] = useState("");
+
   const [query, setQuery] = useState("");
+
+  const [query_categories, setQueryCategories] = useState([]);
 
 
   useEffect(() => {
@@ -19,14 +24,26 @@ const App = () => {
   }, [query])
 
   useEffect(() => {
+    setCategoriesQ(selected);
+  }, [selected])
+
+  useEffect(() => {
     getCategories();
   }, [])
 
   const getRecipes = async () => {
-    const response = await fetch(`${URL}/recipes_paginated/?page_size=20&categories=&ingredients=&name=${query}`);
+    const response = await fetch(`${URL}/recipes_paginated/?page_size=20&${query}`);
     const data = await response.json();
     setRecipes(data.data);
   };
+
+  var setCategoriesQ = (selected) => {
+    var categories = [];
+    {selected.map(category=>(
+      categories.push(category.value)
+    ))}
+    setQueryCategories(categories);
+  }
 
   const getCategories = async () => {
     const categories_response = await fetch(`${URL}/categories`);
@@ -40,7 +57,8 @@ const App = () => {
 
   const getSearch = e => {
     e.preventDefault();
-    setQuery(search);
+    setQueryName(search);
+    setQuery(`&categories=${query_categories}&ingredients=&name=${query_name}`)
     setSearch("");
   }
 
@@ -49,7 +67,9 @@ const App = () => {
       <form onSubmit={getSearch} className="search-form">
 
         <DropdownCategory
-          categories ={categories}
+          categories={categories}
+          selected={selected}
+          setSelected={setSelected}
         />
 
         <input className="search-bar" type="text" value={search} onChange={updateSearch}/>
