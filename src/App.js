@@ -1,15 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import Recipe from './components/Recipe';
-import DropdownCategory from './components/DropdownCategory';
 import DisplayRecipes from './components/DisplayRecipes';
+import CreateRecipe from './components/CreateRecipe'
+import Nav from './components/Nav'
 import './App.css';
-import * as ReactBootStrap from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const App = () => {
 
   return(
-
-  <DisplayRecipes />
+    <Router>
+      <Nav/>
+    <Route path="/" exact component={DisplayRecipes} />
+    <Route path="/receta" exact component={CreateRecipe} />
+    
+    </Router>
 
   );
 }

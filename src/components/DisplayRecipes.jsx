@@ -35,7 +35,7 @@ const DisplayRecipes = () => {
   }, [])
 
   const getRecipes = async () => {
-    const response = await fetch(`${URL}/recipes_paginated/?page_size=20&${query}`);
+    const response = await fetch(`${URL}/recipes_paginated/?page_size=200&${query}`);
     setLoading(true)
     const data = await response.json();
     setRecipes(data.data);

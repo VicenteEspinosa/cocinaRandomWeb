@@ -1,10 +1,9 @@
 .App{
   min-height: 100vh;
-  background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
 }
 
 .search-form{
-  min-height: 10vh;
+  min-height: 3vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,4 +38,25 @@ ol {
 
 .search-button{
   cursor: pointer;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 7vh;
+  background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+  color: white;
+}
+
+.nav-links {
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.spinner{
+  position: relative;
+  top: 4vh;
 }
