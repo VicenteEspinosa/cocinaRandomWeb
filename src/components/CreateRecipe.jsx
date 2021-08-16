@@ -11,7 +11,7 @@ const CreateRecipe = () => {
     // const URL = "http://127.0.0.1:8000"
 
     
-    const [postId, setPostId] = useState(null);
+    // const [postId, setPostId] = useState(null);
     const [postData, setPostData] = useState(null);
     
     // Valores formulario
@@ -48,6 +48,23 @@ const CreateRecipe = () => {
         setCategoriesQ(selectedCategories);
     }, [selectedCategories])
 
+    const firstUpdate2 = useRef(true); // Para el POST
+
+    const [posted, setPosted] = useState(false);
+
+    useEffect(() => {
+    if (firstUpdate2.current) {
+        firstUpdate2.current = false;
+        return;
+        }
+    updatePage();
+    }, [posted])
+
+    const updatePage = () => {
+        window.location.reload()
+    }
+
+
     useEffect(() => {
         setIngredientsQ(selectedIngredients);
     }, [selectedIngredients])
@@ -73,20 +90,42 @@ const CreateRecipe = () => {
 
         // useEffect que no se corre en el renderizado
         useEffect(() => {
-        if (firstUpdate.current) {
-            firstUpdate.current = false;
-            return;
+            if (firstUpdate.current) {
+                firstUpdate.current = false;
+                return;
+            }
+            sendRecipeData()
+            // const requestOptions = {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(postData)
+            // };
+            // fetch((`${URL}/recipes/`), requestOptions)
+            //     .then(response => response.json())
+            //     .then(data => setPostId(data.id))
+            //     .then(setPosted(posted + 1));
+        }, [postData]);
+
+        const sendRecipeData = async () => {
+            const settings = {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData)
+            };
+            try {
+                const fetchResponse = await fetch(`${URL}/recipes/`, settings);
+                const data = await fetchResponse.json();
+                if (fetchResponse.status < 400) {
+                    setPosted(true)
+                }
+                return data;
+            } catch (e) {
+                return e;
+            }
         }
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(postData)
-        };
-        fetch((`${URL}/recipes/`), requestOptions)
-            .then(response => response.json())
-            .then(data => setPostId(data.id))
-            .then(window.location.reload());
-    }, [postData]);
 
     
 
