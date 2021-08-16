@@ -84,8 +84,8 @@ const CreateRecipe = () => {
         };
         fetch((`${URL}/recipes/`), requestOptions)
             .then(response => response.json())
-            .then(data => setPostId(data.id));
-        window.location.reload();
+            .then(data => setPostId(data.id))
+            .then(window.location.reload());
     }, [postData]);
 
     
