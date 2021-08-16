@@ -20,6 +20,7 @@
   border: none;
   padding: 10px 20px;
   color: white;
+  cursor: pointer;
 }
 
 .recipes{
@@ -34,10 +35,6 @@ ul {
 
 ol {
   list-style-type: none;
-}
-
-.search-button{
-  cursor: pointer;
 }
 
 nav {
