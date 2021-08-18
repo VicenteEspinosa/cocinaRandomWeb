@@ -1,0 +1,59 @@
+.general{
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgb(66, 63, 63);
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: rgb(235, 169, 169);
+    align-items: center;
+    min-width: 60%;
+    width: 90%;
+
+    height: auto;
+    min-height: 60%;
+    flex-grow: 0;
+}
+
+.orderRecipe{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;   
+}
+
+.image{
+    border-radius: 5%;
+    width: 80%;
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+.spinner{
+    position: relative;
+    top: 4vh;
+    left: 100vh;
+}
+
+.categories{
+    padding-top: 3vh;
+}
+
+.category{
+    background-color: #EEF; /* Set the background color */
+    border-radius: 100px;     /* Add some roundness */
+    border: 1px #CCF solid; /* Add a border */
+    padding: 5px 8px;
+    display: inline;
+    margin: 2px;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+

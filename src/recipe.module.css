@@ -12,6 +12,17 @@
     flex-grow: 0;
 }
 
+.title{
+    color: black;
+    text-align: center;
+}
+
+.description{
+    color: black;
+    text-align: center;
+
+}
+
 .image{
     display: block;
     margin-left: auto;
@@ -19,14 +30,16 @@
     border-radius: 8px;
     width: 30vw;
     height: 30vw;
+    border: 2px solid rgb(5, 64, 66);
 }
 
 .category{
     background-color: #EEF; /* Set the background color */
     border-radius: 100px;     /* Add some roundness */
     border: 1px #CCF solid; /* Add a border */
-    padding: 2px 5px;
+    padding: 5px 8px;
     display: inline;
+    margin: 2px;
 }
 
 .ingredient{
@@ -40,4 +53,10 @@
     min-width: 40%;
     border-radius: 10px;
     /* border: 5px solid rgb(188, 194, 188); */
+}
+
+.ingredientsTitle{
+    padding-top: 3%;
+    font-size: large;
+    font-weight: 600;
 }

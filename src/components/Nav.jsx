@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function Nav() {
     const NavStyle = {
         color: 'white',
-        textDecoration: 'none'
+        textDecoration: 'none',
     }
 
     return(
@@ -16,7 +16,7 @@ function Nav() {
                     <li>Buscar</li>
                 </Link>
                 <Link style={NavStyle} to ="/receta">
-                 <li>Crear</li>
+                    <li>Crear</li>
                 </Link>
             </ul>
         </nav>

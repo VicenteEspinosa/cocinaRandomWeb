@@ -86,6 +86,7 @@ const DisplayRecipes = () => {
       {recipes.map(recipe=>(
         <Recipe
           key={recipe.id}
+          id={recipe.id}
           title={recipe.name}
           description={recipe.description}
           image={recipe.image}
