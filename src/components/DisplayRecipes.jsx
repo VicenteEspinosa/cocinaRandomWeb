@@ -3,6 +3,7 @@ import Recipe from './Recipe';
 import DropdownCategory from './DropdownCategory';
 import '../App.css';
 import * as ReactBootStrap from 'react-bootstrap';
+import PageRecipe from './PageRecipes'
 
 const DisplayRecipes = () => {
 
@@ -80,11 +81,10 @@ const DisplayRecipes = () => {
           Buscar
         </button>
       </form>
-      <div className="recipes">
-      {loading ? (null): (
+      {loading ? (<PageRecipe recipes={recipes}/>): (
         <ReactBootStrap.Spinner className="spinner" animation="border" />
       )}
-      {recipes.map(recipe=>(
+      {/* {recipes.map(recipe=>(
         <Recipe
           key={recipe.id}
           id={recipe.id}
@@ -95,8 +95,7 @@ const DisplayRecipes = () => {
           categories={recipe.categories}
           links={recipe.links}
         />
-      ))}
-      </div>
+      ))} */}
     </div>
   );
 };
