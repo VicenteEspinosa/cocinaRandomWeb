@@ -1,59 +1,160 @@
-.general{
-    border-radius: 10px;
-    box-shadow: 0px 5px 20px rgb(66, 63, 63);
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    background: rgb(235, 169, 169);
-    align-items: center;
-    min-width: 60%;
-    width: 90%;
-
-    height: auto;
-    min-height: 60%;
-    flex-grow: 0;
+.ingredient{
+    font-weight: 500;
+    font-family: monospace;
+    list-style-type: square;
 }
 
-.orderRecipe{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;   
+.ingredients{
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
 }
 
-.image{
-    border-radius: 5%;
-    width: 80%;
-    max-width: 100%;
-    height: auto;
+@media only screen and (min-width: 768px) {
+
+    .general{
+        border-radius: 10px;
+        box-shadow: 0px 5px 20px rgb(66, 63, 63);
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background: rgb(235, 169, 169);
+        align-items: center;
+        min-width: 60%;
+        width: 90%;
+        height: auto;
+        min-height: 60%;
+        flex-grow: 0;
+    }
+
+    .orderRecipe{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;   
+    }
+
+    .image{
+        border-radius: 5%;
+        width: 80%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .spinner{
+        position: relative;
+        top: 4vh;
+    }
+
+    .categories{
+        padding-top: 3vh;
+    }
+
+    .category{
+        background-color: #EEF; /* Set the background color */
+        border-radius: 100px;     /* Add some roundness */
+        border: 1px #CCF solid; /* Add a border */
+        padding: 5px 8px;
+        display: inline;
+        margin: 2px;
+    }
+
+    .column{
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+    }
+
+    .name{
+        text-align: center;
+        margin-bottom: 2vh;
+    }
+
+    .description{
+        margin-top: 3vh;
+        text-align: center;
+        font-size: 2vh;
+    }
+
 }
 
+ /* Para celu */
+@media only screen and (max-width: 768px) {
+    .general{
+        border-radius: 10px;
+        box-shadow: 0px 5px 20px rgb(66, 63, 63);
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background: rgb(235, 169, 169);
+        align-items: center;
+        min-width: 60%;
+        width: 90%;
+
+        height: auto;
+        min-height: 60%;
+        flex-grow: 0;
+    }
+
+    .orderRecipe{
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .image{
+        border-radius: 5%;
+        width: 90%;
+        max-width: 100%;
+        height: auto;
+    }
 
 
-.spinner{
-    position: relative;
-    top: 4vh;
-    left: 100vh;
+    .spinner{
+        position: relative;
+        top: 4vh;
+    }
+
+    .categories{
+        width: 60%;
+        display: flex;
+        margin-top: 1vh;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .category{
+        background-color: #EEF;
+        border-radius: 100px;
+        border: 1px #CCF solid;
+        padding: 5px 8px;
+        display: inline;
+        margin: 2px;
+    }
+
+    .column{
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+    }
+
+    .ingredient{
+        font-weight: 600;
+        font-family: monospace;
+    }
+
+    .name{
+        text-align: center;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+
+    .description{
+        margin-top: 3vh;
+        text-align: center;
+        font-size: 3vh;
+    }
 }
-
-.categories{
-    padding-top: 3vh;
-}
-
-.category{
-    background-color: #EEF; /* Set the background color */
-    border-radius: 100px;     /* Add some roundness */
-    border: 1px #CCF solid; /* Add a border */
-    padding: 5px 8px;
-    display: inline;
-    margin: 2px;
-}
-
-.column{
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
-}
-

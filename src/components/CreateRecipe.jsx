@@ -4,15 +4,20 @@ import style from '../createRecipe.module.css';
 import Select from 'react-select/';
 import Creatable from 'react-select/creatable';
 import { Redirect } from "react-router-dom";
+import { useHistory } from 'react-router';
 
 const CreateRecipe = () => {
 
     const URL = "https://cocina-random-backend.herokuapp.com";
     // const URL = "http://127.0.0.1:8000"
 
+    let history = useHistory();
     
     // const [postId, setPostId] = useState(null);
     const [postData, setPostData] = useState(null);
+
+    const [newId, setNewId] = useState(null);
+
     
     // Valores formulario
     const [query_name, updateName] = useState("");
@@ -48,22 +53,25 @@ const CreateRecipe = () => {
         setCategoriesQ(selectedCategories);
     }, [selectedCategories])
 
-    const firstUpdate2 = useRef(true); // Para el POST
 
-    const [posted, setPosted] = useState(false);
+    const firstUpdate2 = useRef(true);
 
     useEffect(() => {
-    if (firstUpdate2.current) {
-        firstUpdate2.current = false;
-        return;
+        if (firstUpdate2.current) {
+            firstUpdate2.current = false;
+            console.log("red")
+            redirect()
+            return;
         }
-    updatePage();
-    }, [posted])
+        console.log("REDIRECT")
+        history.push(`/receta/${newId}`)
+        return <Redirect to={`/recipe`} />
+    }, [newId]);
 
-    const updatePage = () => {
-        window.location.reload()
+    const redirect = () => {
+        console.log("a")
+        return <Redirect to="/" />
     }
-
 
     useEffect(() => {
         setIngredientsQ(selectedIngredients);
@@ -95,15 +103,6 @@ const CreateRecipe = () => {
                 return;
             }
             sendRecipeData()
-            // const requestOptions = {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(postData)
-            // };
-            // fetch((`${URL}/recipes/`), requestOptions)
-            //     .then(response => response.json())
-            //     .then(data => setPostId(data.id))
-            //     .then(setPosted(posted + 1));
         }, [postData]);
 
         const sendRecipeData = async () => {
@@ -119,7 +118,7 @@ const CreateRecipe = () => {
                 const fetchResponse = await fetch(`${URL}/recipes/`, settings);
                 const data = await fetchResponse.json();
                 if (fetchResponse.status < 400) {
-                    setPosted(true)
+                    setNewId(data.id);
                 }
                 return data;
             } catch (e) {

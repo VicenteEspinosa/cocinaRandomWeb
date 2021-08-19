@@ -1,6 +1,4 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import '../App.css';
 import style from '../oneRecipe.module.css';
 import * as ReactBootStrap from 'react-bootstrap';
@@ -42,16 +40,16 @@ const OneRecipe = ({ match }) => {
                     </ol>
                 </div>
                 <div className={style.column}>
-                    <h1>{recipe.name}</h1>
-                    <p>{recipe.description}</p>
-                    <ul className={style.ingrdients}>
+                    <h1 className={style.name}>{recipe.name}</h1>
+                    <ul className={style.ingredients}>
                         {recipe.ingredients.map(ingredient=>(
-                        <li key={ingredient.id}>{ingredient.name}</li>
+                        <li className={style.ingredient} key={ingredient.id}>{ingredient.name}</li>
                         ))}
                     </ul>
                     {recipe.links.map(link=>(
                     <a key={link} href={link}>{link}</a>
                     ))}
+                    <p className={style.description}>{recipe.description}</p>
                 </div>
             </ol>
         </div>

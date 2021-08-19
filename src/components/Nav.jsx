@@ -18,6 +18,9 @@ function Nav() {
                 <Link style={NavStyle} to ="/receta">
                     <li>Crear</li>
                 </Link>
+                <Link style={NavStyle} to ="/aleatoria">
+                    <li>Aleatoria</li>
+                </Link>
             </ul>
         </nav>
     );
