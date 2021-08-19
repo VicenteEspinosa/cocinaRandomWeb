@@ -21,11 +21,6 @@ const Recipe = ({id, title, description, image, ingredients, categories, links})
                     <li className={style.category} style={{background: category.color}} key={category.id}>{category.name}</li>
                 ))}
             </ol>
-            <ol className="link-container">
-                {links.map(link => (
-                    <a key={link} href={link}>{link}</a>
-                ))}
-            </ol>
         </div>
     );
 };

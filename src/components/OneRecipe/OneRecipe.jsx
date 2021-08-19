@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import '../App.css';
-import style from '../oneRecipe.module.css';
+import '../../App.css';
+import style from './oneRecipe.module.css';
 import * as ReactBootStrap from 'react-bootstrap';
 
 const OneRecipe = ({ match }) => {

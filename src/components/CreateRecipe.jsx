@@ -3,7 +3,6 @@ import '../App.css';
 import style from '../createRecipe.module.css';
 import Select from 'react-select/';
 import Creatable from 'react-select/creatable';
-import { Redirect } from "react-router-dom";
 import { useHistory } from 'react-router';
 
 const CreateRecipe = () => {
@@ -59,19 +58,10 @@ const CreateRecipe = () => {
     useEffect(() => {
         if (firstUpdate2.current) {
             firstUpdate2.current = false;
-            console.log("red")
-            redirect()
             return;
         }
-        console.log("REDIRECT")
         history.push(`/receta/${newId}`)
-        return <Redirect to={`/recipe`} />
     }, [newId]);
-
-    const redirect = () => {
-        console.log("a")
-        return <Redirect to="/" />
-    }
 
     useEffect(() => {
         setIngredientsQ(selectedIngredients);

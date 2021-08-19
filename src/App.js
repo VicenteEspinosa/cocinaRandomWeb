@@ -1,8 +1,8 @@
 import React from 'react';
 import DisplayRecipes from './components/DisplayRecipes';
 import CreateRecipe from './components/CreateRecipe'
-import OneRecipe from './components/OneRecipe'
-import RandomRecipe from './components/RandomRecipe'
+import OneRecipe from './components/OneRecipe/OneRecipe'
+import RandomRecipe from './components/RandomRecipe/RandomRecipe'
 import Nav from './components/Nav'
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
