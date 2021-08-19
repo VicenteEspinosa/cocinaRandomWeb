@@ -1,6 +1,6 @@
 import React from 'react';
 import DisplayRecipes from './components/PageRecipes/DisplayRecipes';
-import CreateRecipe from './components/CreateRecipe'
+import CreateRecipe from './components/CreateRecipe/CreateRecipe'
 import OneRecipe from './components/OneRecipe/OneRecipe'
 import RandomRecipe from './components/RandomRecipe/RandomRecipe'
 import Nav from './components/Nav'

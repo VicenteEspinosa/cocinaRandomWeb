@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
-import '../App.css';
-import style from '../createRecipe.module.css';
+import '../../App.css';
+import style from './createRecipe.module.css';
 import Select from 'react-select/';
 import Creatable from 'react-select/creatable';
 import { useHistory } from 'react-router';
