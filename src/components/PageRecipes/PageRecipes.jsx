@@ -1,6 +1,6 @@
 import React from 'react';
 import Recipe from './Recipe';
-import '../App.css';
+import '../../App.css';
 
 
 const PageRecipe = (recipes) => {

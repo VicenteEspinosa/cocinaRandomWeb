@@ -32,19 +32,22 @@ const RandomRecipe = () => {
 
     return(
         <div className={style.app}>
-                  {loading ? (
+                  {loading ? ( <div>
                       <DisplayRandom
                       key={recipe.id}
                       recipe={recipe}
                   />
+
+                    <div className={style.container}>
+                        <div className={style.verticalcenter}>
+                            <button className={style.button} onClick={fetchRecipe}> Escoger otra!</button>
+                        </div>
+                    </div>
+                  </div>
+                  
                   ): (
         <ReactBootStrap.Spinner className={style.spinner} animation="border" />
       )}
-            <div className={style.container}>
-                <div className={style.verticalcenter}>
-                    <button className={style.button} onClick={fetchRecipe}> Escoger otra!</button>
-                </div>
-            </div>
         </div>
     );
 };

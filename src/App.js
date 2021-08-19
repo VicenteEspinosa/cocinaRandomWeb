@@ -1,5 +1,5 @@
 import React from 'react';
-import DisplayRecipes from './components/DisplayRecipes';
+import DisplayRecipes from './components/PageRecipes/DisplayRecipes';
 import CreateRecipe from './components/CreateRecipe'
 import OneRecipe from './components/OneRecipe/OneRecipe'
 import RandomRecipe from './components/RandomRecipe/RandomRecipe'

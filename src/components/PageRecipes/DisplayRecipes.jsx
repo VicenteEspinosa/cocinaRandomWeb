@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import Recipe from './Recipe';
-import DropdownCategory from './DropdownCategory';
-import '../App.css';
+import DropdownCategory from '../DropdownCategory';
+import '../../App.css';
 import * as ReactBootStrap from 'react-bootstrap';
 import PageRecipe from './PageRecipes'
 
