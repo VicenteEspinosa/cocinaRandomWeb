@@ -8,12 +8,12 @@ import { useHistory } from 'react-router';
 const CreateRecipe = () => {
 
     const URL = "https://cocina-random-backend.herokuapp.com";
-    // const URL = "http://127.0.0.1:8000"
+    //const URL = "http://127.0.0.1:8000"
 
     let history = useHistory();
     
     // const [postId, setPostId] = useState(null);
-    const [postData, setPostData] = useState(null);
+    const [postData, setPostData] = useState({"name": "", "description": "", "file": null});
 
     const [newId, setNewId] = useState(null);
 
@@ -22,13 +22,13 @@ const CreateRecipe = () => {
     const [query_name, updateName] = useState("");
     const [query_description, updateDescription] = useState("");
     const [query_link, updateLink] = useState("");
-    const [query_picture, updatePicture] = useState("");
+    const [file, setFile] = useState(null);
 
     // Valores extra para el POST
     const [query_categories, setQueryCategories] = useState([]);
     const [query_ingredients, setQueryIngredients] = useState([]);
     const [query_new, setQueryNew] = useState([]);
-    
+
     // Actualizar valores formulario
     const setQueryName = e => {
         updateName(e.target.value);
@@ -38,9 +38,6 @@ const CreateRecipe = () => {
     };
     const setQueryLink = e => {
         updateLink(e.target.value);
-    };
-    const setQueryPicture = e => {
-        updatePicture(e.target.value);
     };
 
     const [selectedIngredients, setSelectedIngredients] = useState([]);
@@ -60,14 +57,39 @@ const CreateRecipe = () => {
             firstUpdate2.current = false;
             return;
         }
-        history.push(`/receta/${newId}`)
+        if (newId != null) {
+            history.push(`/receta/${newId}`)
+        }
+        return
     }, [newId]);
 
     useEffect(() => {
         setIngredientsQ(selectedIngredients);
     }, [selectedIngredients])
     
-    
+    const onFileChange = async (e) => {
+        const file_original = e.target.files[0];
+        if (file_original != undefined) {
+            const file_base64 = await convertBase64(file_original);
+            setFile(file_base64);
+        }
+        else {
+            setFile(null);
+        }
+    };
+
+    const convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            };
+            fileReader.onerror = (error) => {
+                reject(error);
+            };
+        });
+    };
     
     const postRecipe = e => {
         e.preventDefault();
@@ -76,10 +98,11 @@ const CreateRecipe = () => {
                 "name": query_name,
                 "description": query_description,
                 "categories": query_categories,
-                "image": query_picture,
+                "image": "https://pbs.twimg.com/profile_images/949787136030539782/LnRrYf6e.jpg",
                 "ingredients": query_ingredients,
                 "links": [query_link],
-                "new": query_new
+                "new": query_new,
+                "file": file
             })
         }
         
@@ -92,7 +115,12 @@ const CreateRecipe = () => {
                 firstUpdate.current = false;
                 return;
             }
-            sendRecipeData()
+            if (postData["name"] != "" && postData["description"] != "" && postData["file"] != null){
+                sendRecipeData()
+            }
+            else {
+                alert("Debes rellenar el nombre, descripcion y subir una foto como minimo!")
+            }
         }, [postData]);
 
         const sendRecipeData = async () => {
@@ -199,8 +227,8 @@ const CreateRecipe = () => {
             </label>
 
             <label className={style.label}>
-                <p>Link foto</p>
-                <input className={style.input} placeholder="*Foto*" name="picture" value={query_picture} onChange={setQueryPicture}></input>
+                <p>Subir Foto</p>
+                <input type="file" accept="image/png, image/gif, image/jpeg" onChange={(e) => {onFileChange(e)}}></input>
             </label>
 
             <label className={style.label}>
