@@ -4,6 +4,8 @@ import style from './createRecipe.module.css';
 import Select from 'react-select/';
 import Creatable from 'react-select/creatable';
 import { useHistory } from 'react-router';
+import * as ReactBootStrap from 'react-bootstrap';
+
 
 const CreateRecipe = () => {
 
@@ -16,6 +18,8 @@ const CreateRecipe = () => {
     const [postData, setPostData] = useState({"name": "", "description": "", "file": null});
 
     const [newId, setNewId] = useState(null);
+    const [loading, setLoading] = useState(false);
+
 
     
     // Valores formulario
@@ -124,6 +128,8 @@ const CreateRecipe = () => {
         }, [postData]);
 
         const sendRecipeData = async () => {
+            setLoading(true);
+            console.log(loading)
             const settings = {
                 method: 'POST',
                 headers: {
@@ -211,10 +217,12 @@ const CreateRecipe = () => {
                 break
         }
     }
-
   return(
     
     <form className={style.Form}>
+        {loading ? (
+            <ReactBootStrap.Spinner className="spinner" animation="border" />
+          ) : (
         <fieldset>
             <label className={style.label}>
                 <p>Nombre de la receta</p>
@@ -272,6 +280,7 @@ const CreateRecipe = () => {
             </div>
             </label>
         </fieldset>
+        )}
     </form>
 
   );
