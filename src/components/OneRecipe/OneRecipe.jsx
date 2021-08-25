@@ -41,13 +41,16 @@ const OneRecipe = ({ match }) => {
                 </div>
                 <div className={style.column}>
                     <h1 className={style.name}>{recipe.name}</h1>
-                    <ul className={style.ingredients}>
-                        {recipe.ingredients.map(ingredient=>(
-                        <li className={style.ingredient} key={ingredient.id}>{ingredient.name}</li>
-                        ))}
-                    </ul>
+                    <div className={style.ingredientsContainer}>
+                        <p className={style.ingredientsTitle}>Ingredientes:</p>
+                        <ul className={style.ingredients}>
+                            {recipe.ingredients.map(ingredient=>(
+                            <li className={style.ingredient} key={ingredient.id}>{ingredient.name}</li>
+                            ))}
+                        </ul>
+                    </div>
                     {recipe.links.map(link=>(
-                    <a key={link} href={link}>{link}</a>
+                    <a className={style.link} key={link} href={link}>{link}</a>
                     ))}
                     <p className={style.description}>{recipe.description}</p>
                 </div>

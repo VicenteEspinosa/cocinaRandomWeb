@@ -10,7 +10,22 @@
     -moz-columns: 2;
 }
 
+.link{
+    text-align: center;
+    margin-top: 8%;
+}
+
+
+
+
 @media only screen and (min-width: 768px) {
+
+    .ingredientsTitle{
+        padding-top: 3%;
+        font-size: 1.5vw;
+        font-weight: 600;
+        text-align: center;
+    }
 
     .general{
         border-radius: 10px;
@@ -19,7 +34,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        background: rgb(235, 169, 169);
+        background: #C2CAD0;
         align-items: center;
         min-width: 60%;
         width: 90%;
@@ -36,6 +51,7 @@
     }
 
     .image{
+        margin-top: 2%;
         border-radius: 5%;
         width: 80%;
         max-width: 100%;
@@ -70,6 +86,7 @@
     .name{
         text-align: center;
         margin-bottom: 2vh;
+        text-decoration: underline;
     }
 
     .description{
@@ -82,6 +99,13 @@
 
  /* Para celu */
 @media only screen and (max-width: 768px) {
+    .ingredientsTitle{
+        padding-top: 3%;
+        font-size: 2.5vw;
+        font-weight: 600;
+        text-align: center;
+    }
+
     .general{
         border-radius: 10px;
         box-shadow: 0px 5px 20px rgb(66, 63, 63);
@@ -89,7 +113,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        background: rgb(235, 169, 169);
+        background: #C2CAD0;
         align-items: center;
         min-width: 60%;
         width: 90%;
@@ -105,6 +129,7 @@
     }
 
     .image{
+        margin-top: 2%;
         border-radius: 5%;
         width: 90%;
         max-width: 100%;
@@ -150,6 +175,7 @@
         text-align: center;
         margin-top: 2vh;
         margin-bottom: 2vh;
+        text-decoration: underline;
     }
 
     .description{
