@@ -12,18 +12,19 @@ const OneRecipe = ({ match }) => {
 
 
     useEffect(() => {
+
+        const fetchRecipe = async () => {
+            const fetchItem = await fetch(`${URL}/recipe/${match.params.id}`);
+            const item = await fetchItem.json();
+            setRecipe(item)
+            setLoading(true)
+        }
+
         fetchRecipe();
-    }, []);
+    }, [match.params.id]);
 
     const [recipe, setRecipe] = useState({links:[], categories:[], ingredients:[]})
 
-
-    const fetchRecipe = async () => {
-        const fetchItem = await fetch(`${URL}/recipe/${match.params.id}`);
-        const item = await fetchItem.json();
-        setRecipe(item)
-        setLoading(true)
-    }
 
     return(
         <div className={style.general}>

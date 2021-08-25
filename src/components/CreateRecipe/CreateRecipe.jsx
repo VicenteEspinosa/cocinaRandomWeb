@@ -61,11 +61,11 @@ const CreateRecipe = () => {
             firstUpdate2.current = false;
             return;
         }
-        if (newId != null) {
+        if (newId !== null) {
             history.push(`/receta/${newId}`)
         }
         return
-    }, [newId]);
+    }, [newId, history]);
 
     useEffect(() => {
         setIngredientsQ(selectedIngredients);
@@ -73,7 +73,7 @@ const CreateRecipe = () => {
     
     const onFileChange = async (e) => {
         const file_original = e.target.files[0];
-        if (file_original != undefined) {
+        if (file_original !== undefined) {
             const file_base64 = await convertBase64(file_original);
             setFile(file_base64);
         }
@@ -119,36 +119,34 @@ const CreateRecipe = () => {
                 firstUpdate.current = false;
                 return;
             }
-            if (postData["name"] != "" && postData["description"] != "" && postData["file"] != null){
+            if (postData["name"] !== "" && postData["description"] !== "" && postData["file"] !== null){
+                const sendRecipeData = async () => {
+                    setLoading(true);
+                    const settings = {
+                        method: 'POST',
+                        headers: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(postData)
+                    };
+                    try {
+                        const fetchResponse = await fetch(`${URL}/recipes/`, settings);
+                        const data = await fetchResponse.json();
+                        if (fetchResponse.status < 400) {
+                            setNewId(data.id);
+                        }
+                        return data;
+                    } catch (e) {
+                        return e;
+                    }
+                }
                 sendRecipeData()
             }
             else {
                 alert("Debes rellenar el nombre, descripcion y subir una foto como minimo!")
             }
         }, [postData]);
-
-        const sendRecipeData = async () => {
-            setLoading(true);
-            console.log(loading)
-            const settings = {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(postData)
-            };
-            try {
-                const fetchResponse = await fetch(`${URL}/recipes/`, settings);
-                const data = await fetchResponse.json();
-                if (fetchResponse.status < 400) {
-                    setNewId(data.id);
-                }
-                return data;
-            } catch (e) {
-                return e;
-            }
-        }
 
     
 
